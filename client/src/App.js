@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import { UserContext } from './UserContext';
 import Chat from './components/chat/Chat';
-import Home from './components/home/Home'
+import Home from './components/home/Home';
+import Navbar from './components/layout/Navbar';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <UserContext.Provider value={{ user, setUser }}>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/chat" component={Chat} />
