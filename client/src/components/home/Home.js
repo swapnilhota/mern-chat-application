@@ -17,6 +17,9 @@ const Home = () => {
     const [room, setRoom] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
+        socket.emit('create-room', room);
+        console.log(room);
+        setRoom('');
     }
     const rooms = [
         {
