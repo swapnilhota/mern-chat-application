@@ -1,9 +1,10 @@
 import React from 'react'
+import Room from './Room'
 
-const RoomList = () => {
+const RoomList = ({ rooms }) => {
     return (
         <div>
-            roomList
+            {rooms && rooms.map(room => (<Room key={room._id} name={room.name} />))}
         </div>
     )
 }
