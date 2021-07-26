@@ -4,6 +4,16 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const { user, setUser } = useContext(UserContext);
+    const rooms = [
+        {
+            name: 'room1',
+            _id: '123'
+        },
+        {
+            name: 'room2',
+            _id: '456'
+        }
+    ]
 
     const setAsJohn = () => {
         const john = {
