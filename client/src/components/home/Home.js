@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../UserContext';
 import { Link } from 'react-router-dom';
+import RoomList from './RoomList';
 
 const Home = () => {
     const { user, setUser } = useContext(UserContext);
@@ -57,6 +58,9 @@ const Home = () => {
                             <a href="#" onClick={setAsTom} >Set as Tom</a>
                         </div>
                     </div>
+                </div>
+                <div className="col s6 m5 offset-1">
+                    <RoomList rooms={rooms} />
                 </div>
             </div>
             <Link to={'/chat'}>
