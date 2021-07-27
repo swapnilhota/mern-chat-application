@@ -18,4 +18,6 @@ const removeUser = (socket_id) => {
     }
 }
 
-module.exports = { addUser, removeUser };
+const getUser = (socket_id) => users.find(user => user.socket_id === socket_id);
+
+module.exports = { addUser, removeUser, getUser };
