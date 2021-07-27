@@ -20,7 +20,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.on('message', message => {
-            setMessages([...messages.message]);
+            setMessages([...messages, message]);
         })
     }, [messages])
 
@@ -36,6 +36,7 @@ const Chat = () => {
         <div>
             <div>{room_id} {room_name}</div>
             <h1>Chat {JSON.stringify(user)}</h1>
+            <pre>{JSON.stringify(messages, null, '\t')}</pre>
             <form action="" onSubmit={sendMessage} >
                 <input
                     type="text"
