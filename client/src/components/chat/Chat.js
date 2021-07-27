@@ -29,9 +29,15 @@ const Chat = () => {
         <div>
             <div>{room_id} {room_name}</div>
             <h1>Chat {JSON.stringify(user)}</h1>
-            <Link to={'/'}>
-                <button>Go to Home</button>
-            </Link>
+            <form action="" onSubmit={sendMessage} >
+                <input
+                    type="text"
+                    value={message}
+                    onChange={e => setMessage(e.target.value)}
+                    onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}
+                />
+                <button className="btn" >Send Message</button>
+            </form>
         </div>
     )
 }
