@@ -11,11 +11,18 @@ const Chat = () => {
     let { room_id, room_name } = useParams();
 
     const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         socket = io(ENDPOINT);
         socket.emit('join', { name: user.name, room_id: room_id, user_id: user.id })
-    }, [ENDPOINT])
+    }, []);
+
+    useEffect(() => {
+        socket.on('message', message => {
+            setMessages([...messages.message]);
+        })
+    }, [messages])
 
     const sendMessage = event => {
         event.preventDefault();

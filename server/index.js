@@ -17,6 +17,7 @@ io.on('connection', (socket) => {
             room_id: room_id,
             user_id: user_id
         });
+        socket.join(room_id);
         if (error) {
             console.log('join error ', error);
         } else {
