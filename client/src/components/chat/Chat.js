@@ -15,7 +15,7 @@ const Chat = () => {
     useEffect(() => {
         socket = io(ENDPOINT);
         socket.emit('join', { name: user.name, room_id: room_id, user_id: user.id })
-    })
+    }, [ENDPOINT])
 
     const sendMessage = event => {
         event.preventDefault();
