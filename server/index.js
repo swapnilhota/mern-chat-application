@@ -5,6 +5,8 @@ const io = socketio(http);
 const PORT = process.env.PORT || 5000;
 const { addUser, getUser, removeUser } = require('./helper');
 
+const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
+
 io.on('connection', (socket) => {
     console.log(socket.id);
     socket.on('create-room', name => {
