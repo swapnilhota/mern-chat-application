@@ -4,8 +4,10 @@ const socketio = require('socket.io');
 const io = socketio(http);
 const PORT = process.env.PORT || 5000;
 const { addUser, getUser, removeUser } = require('./helper');
+const mongoose = require('mongoose');
 
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('db connected')).catch((err) => console.log(err));
 
 io.on('connection', (socket) => {
     console.log(socket.id);
