@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const { addUser, getUser, removeUser } = require('./helper');
 const mongoose = require('mongoose');
 const Room = require('./models/Room');
+const Message = require('./models/Message');
 
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
@@ -45,8 +46,11 @@ io.on('connection', (socket) => {
             text: message
         };
         console.log('message, received', msgToStore);
-        io.to(room_id).emit('message', msgToStore);
-        callback();
+        const msg = new Message(msgToStore);
+        msg.save().then((result) => {
+            io.to(room_id).emit('message', result);
+            callback();
+        })
     });
     socket.on('disconnect', () => {
         const user = removeUser(socket.id);
