@@ -5,14 +5,19 @@ const io = socketio(http);
 const PORT = process.env.PORT || 5000;
 const { addUser, getUser, removeUser } = require('./helper');
 const mongoose = require('mongoose');
+const Room = require('./models/Room');
 
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('db connected')).catch((err) => console.log(err));
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
 io.on('connection', (socket) => {
     console.log(socket.id);
     socket.on('create-room', name => {
-        console.log('The room name received is ', name);
+        //console.log('The room name received is ', name);
+        const room = new Room({ name });
+        room.save().then((result) => {
+            io.emit('room-created', result);
+        })
     });
     socket.on('join', ({ name, room_id, user_id }) => {
         const { error, user } = addUser({
@@ -46,5 +51,5 @@ io.on('connection', (socket) => {
 });
 
 http.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`);
+    console.log(`LISTENING ON PORT ${PORT}`);
 })
