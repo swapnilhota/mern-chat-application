@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './Message.css';
 
 const Message = ({ message: { name, user_id, text }, current_uid }) => {
 
