@@ -9,25 +9,33 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+    }
+
     return (
         <div>
             <div className="row">
-                <form className="col s12">
+                <form className="col s12" onSubmit={submitHandler} >
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={name} onChange={e => setName(e.target.value)} id="name" type="text" className="validate" />
+                            <div className="name error red-text" ></div>
                             <label htmlFor="name">Name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={email} onChange={e => setEmail(e.target.value)} id="email" type="email" className="validate" />
+                            <div className="email error red-text" ></div>
                             <label htmlFor="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" className="validate" />
+                            <div className="password error red-text" ></div>
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>
