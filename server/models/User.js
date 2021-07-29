@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const { isEmail } = require('validator');
 
 const userSchema = new mongoose.Schema({
@@ -20,9 +21,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+//mongoose hook
 // executes before user is saved.
-userSchema.pre('save', (next) => {
-    console.log('before save');
+userSchema.pre('save', async (next) => {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
     next();
 })
 
