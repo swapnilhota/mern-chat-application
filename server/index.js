@@ -1,4 +1,5 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const authRoutes = require('./routes/authRoutes');
 const http = require('http').createServer(app);
 const socketio = require('socket.io');
@@ -12,6 +13,7 @@ const Message = require('./models/Message');
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
+app.use(express.json());
 app.use(authRoutes);
 
 io.on('connection', (socket) => {
