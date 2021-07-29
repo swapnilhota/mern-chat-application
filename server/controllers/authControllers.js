@@ -2,6 +2,10 @@ const User = require('../models/User');
 
 const alertError = (err) => {
     let errors = { name: '', email: '', password: '' };
+    if (err.code === 11000) {
+        errors.email = 'This email is already registered';
+        return errors;
+    }
     if (err.message.includes('user validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message;
