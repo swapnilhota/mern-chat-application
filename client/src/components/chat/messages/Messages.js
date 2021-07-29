@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from '../message/Message'
+import './Messages.css';
 
 const Messages = ({ messages, user_id }) => {
     return (
