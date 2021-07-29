@@ -20,5 +20,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+// executes before user is saved.
+userSchema.pre('save', (next) => {
+    console.log('before save');
+    next();
+})
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;
