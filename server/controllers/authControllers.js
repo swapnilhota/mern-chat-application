@@ -1,4 +1,12 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+
+const maxAge = 5 * 24 * 60 * 60; // 5 days
+const createJWT = (id) => {
+    return jwt.sign({ id }, 'chatroom secret', {
+        expiresIn: maxAge
+    })
+}
 
 const alertError = (err) => {
     let errors = { name: '', email: '', password: '' };
