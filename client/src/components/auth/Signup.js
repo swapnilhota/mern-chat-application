@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../UserContext';
+import { Redirect } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -32,9 +33,16 @@ const Signup = () => {
                 setNameError(data.errors.name);
                 setPasswordError(data.errors.password);
             }
+            if (data.user) {
+                setUser(data.user);
+            }
         } catch (err) {
             console.log(err);
         }
+    }
+
+    if (user) {
+        return <Redirect to="/" />
     }
 
     return (
