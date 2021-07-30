@@ -26,6 +26,8 @@ module.exports.signup = async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const user = await User.create({ name, email, password });
+        const token = createJWT(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 }) // for cookie time unit is milliseconds
         res.status(201).json({ user });
     } catch (err) {
         let errors = alertError(err);
