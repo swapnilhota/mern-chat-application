@@ -20,6 +20,11 @@ const Signup = () => {
             });
             const data = await res.json();
             console.log(data);
+            if (data.errors) {
+                setEmailError(data.errors.email);
+                setNameError(data.errors.name);
+                setPasswordError(data.errors.password);
+            }
         } catch (err) {
             console.log(err);
         }
