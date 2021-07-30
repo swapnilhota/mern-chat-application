@@ -16,9 +16,9 @@ const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/cha
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
 const corsOptions = {
-    origin: 'http://localhost:3000/',
-    credential: true,
-    optionSuccessStatus: 200
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));

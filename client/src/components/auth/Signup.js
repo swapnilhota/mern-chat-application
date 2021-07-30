@@ -12,7 +12,7 @@ const Signup = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            const res = fetch('http://localhost:5000/signup', {
+            const res = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
                 body: JSON.stringify({ name, email, password }),
                 headers: { 'Content-Type': 'application/json' }
