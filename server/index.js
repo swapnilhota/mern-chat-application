@@ -9,12 +9,14 @@ const { addUser, getUser, removeUser } = require('./helper');
 const mongoose = require('mongoose');
 const Room = require('./models/Room');
 const Message = require('./models/Message');
+const cookieParser = require('cookie-parser');
 
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
 app.use(express.json());
 app.use(authRoutes);
+app.use(cookieParser);
 
 io.on('connection', (socket) => {
     console.log(socket.id);
