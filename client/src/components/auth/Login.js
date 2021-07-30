@@ -69,7 +69,7 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                     </div>
                 </div>
-                <button className="btn" >Sign Up</button>
+                <button className="btn" >Login</button>
             </form>
         </div>
     )
