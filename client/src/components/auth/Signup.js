@@ -37,21 +37,21 @@ const Signup = () => {
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={name} onChange={e => setName(e.target.value)} id="name" type="text" className="validate" />
-                            <div className="name error red-text" ></div>
+                            <div className="name error red-text" >{nameError}</div>
                             <label htmlFor="name">Name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={email} onChange={e => setEmail(e.target.value)} id="email" type="email" className="validate" />
-                            <div className="email error red-text" ></div>
+                            <div className="email error red-text" >{emailError}</div>
                             <label htmlFor="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <input value={password} onChange={e => setPassword(e.target.value)} id="password" type="password" className="validate" />
-                            <div className="password error red-text" ></div>
+                            <div className="password error red-text" >{passwordError}</div>
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>
