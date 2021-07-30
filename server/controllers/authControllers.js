@@ -37,7 +37,7 @@ module.exports.signup = async (req, res) => {
 }
 
 module.exports.login = (req, res) => {
-    res.send('login');
+
 }
 
 module.exports.logout = (req, res) => {
