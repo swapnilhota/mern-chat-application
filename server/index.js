@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const http = require('http').createServer(app);
 const socketio = require('socket.io');
@@ -14,9 +15,16 @@ const cookieParser = require('cookie-parser');
 const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
+const corsOptions = {
+    origin: 'http://localhost:3000/',
+    credential: true,
+    optionSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(authRoutes);
-app.use(cookieParser);
+app.use(cookieParser());
 
 io.on('connection', (socket) => {
     console.log(socket.id);

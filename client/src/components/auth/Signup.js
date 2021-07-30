@@ -9,9 +9,19 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-
+        try {
+            const res = fetch('http://localhost:5000/signup', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, password }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
