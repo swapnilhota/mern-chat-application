@@ -23,8 +23,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(authRoutes);
 app.use(cookieParser());
+app.use(authRoutes);
 
 io.on('connection', (socket) => {
     console.log(socket.id);

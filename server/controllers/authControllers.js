@@ -42,6 +42,24 @@ module.exports.signup = async (req, res) => {
     }
 }
 
+module.exports.verifyuser = (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (token) {
+        jwt.verify(token, 'chatroom secret', async (err, decodedToken) => {
+            if (err) {
+                console.log(err.message);
+            } else {
+                let user = await User.findById(decodedToken.id);
+                res.json(user);
+                next();
+            }
+        });
+    }
+    else {
+        next();
+    }
+}
+
 module.exports.login = async (req, res) => {
     const { email, password } = req.body;
     try {
