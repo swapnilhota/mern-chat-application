@@ -14,7 +14,7 @@ const alertError = (err) => {
         errors.email = 'This email is already registered';
         return errors;
     }
-    if (err.message.includes('user validation failed')) {
+    if (err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message;
         })
@@ -30,6 +30,7 @@ module.exports.signup = async (req, res) => {
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 }) // for cookie time unit is milliseconds
         res.status(201).json({ user });
     } catch (err) {
+        console.log(err);
         let errors = alertError(err);
         res.status(400).json({ errors });
     }
