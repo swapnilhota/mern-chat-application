@@ -1,10 +1,10 @@
 import React from 'react'
 
-const SignedInMenu = () => {
+const SignedInMenu = ({ logout }) => {
     return (
-        <div>
 
-        </div>
+        <li onClick={logout} ><a href="#">Logout</a></li>
+
     )
 }
 
