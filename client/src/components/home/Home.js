@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../UserContext';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import RoomList from './RoomList';
 import io from 'socket.io-client';
 let socket;
@@ -60,6 +60,10 @@ const Home = () => {
             id: '456'
         }
         setUser(tom);
+    }
+
+    if (!user) {
+        return <Redirect to="/login" />
     }
 
     return (
