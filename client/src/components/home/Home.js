@@ -89,9 +89,6 @@ const Home = () => {
                     <RoomList rooms={rooms} />
                 </div>
             </div>
-            <Link to={'/chat'}>
-                <button>Go to Chat</button>
-            </Link>
         </div>
     )
 }
