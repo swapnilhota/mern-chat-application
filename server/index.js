@@ -12,7 +12,7 @@ const Room = require('./models/Room');
 const Message = require('./models/Message');
 const cookieParser = require('cookie-parser');
 
-const mongoDB = "mongodb+srv://first-user:mongodb@cluster0.t01a9.mongodb.net/chat-database?retryWrites=true&w=majority";
+const mongoDB = "mongodb+srv://first-user:<PASSWORD>@cluster0.t01a9.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('DB CONNECTED')).catch((err) => console.log(err));
 
 const corsOptions = {
