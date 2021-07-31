@@ -8,7 +8,7 @@ const Navbar = () => {
     const logout = async () => {
         try {
             const res = await fetch('http://localhost:5000/logout', {
-                credentials: true
+                credentials: 'include'
             });
             const data = res.json();
             console.log('logout data', data);
